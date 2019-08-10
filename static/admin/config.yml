@@ -222,7 +222,7 @@ collections: # A list of collections the CMS should be able to edit
         name: 'componets-page'
         fields:
           - {
-              label: Template,
+              label: Template,  
               name: template,
               widget: hidden,
               default: ComponetsPage,
