@@ -16,12 +16,14 @@ media_library:
     clearable: true
 
 collections: # A list of collections the CMS should be able to edit
+ 
   - name: 'pages'
     label: 'Page'
     delete: false # Prevent users from deleting documents in this collection
     editor:
       preview: true
     files:
+    
       - file: 'content/pages/contact.md'
         label: 'Contact Page'
         name: 'contact-page'
@@ -98,7 +100,7 @@ collections: # A list of collections the CMS should be able to edit
                   required: false,
                 }
 
-- file: 'content/pages/about.md'
+       - file: 'content/pages/about.md'
         label: 'About Page'
         name: 'about-page'
         fields:
@@ -108,7 +110,7 @@ collections: # A list of collections the CMS should be able to edit
               widget: hidden,
               default: AboutPage,
             }
-          - { label: Slug, name: slug, widget: hidden, default: 'about' }
+          - { label: Slug, name: slug, widget: hidden, default: 'contact' }
           - { label: Title, name: title, widget: string }
           - {
               label: Featured Image,
@@ -173,6 +175,8 @@ collections: # A list of collections the CMS should be able to edit
                   widget: boolean,
                   required: false,
                 }
+
+
 
 
       - file: 'content/pages/blog.md'
