@@ -2,7 +2,7 @@
 template: HomePage
 slug: ''
 title: Pappermill
-featuredImage: 'https://ucarecdn.com/31cc5423-f9c6-43ed-ba6b-d1ed1a65d5d3/'
+featuredImage: 'https://ucarecdn.com/e182e9ec-3c74-4115-97fe-02ece7e9278f/'
 subtitle: ' Welcome to the ultimate Gatsby and Netlify starter project.'
 meta:
   description: This is a meta description.
