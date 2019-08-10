@@ -23,7 +23,6 @@ collections: # A list of collections the CMS should be able to edit
     editor:
       preview: true
     files:
-    
       - file: 'content/pages/contact.md'
         label: 'Contact Page'
         name: 'contact-page'
@@ -100,7 +99,7 @@ collections: # A list of collections the CMS should be able to edit
                   required: false,
                 }
 
-       - file: 'content/pages/about.md'
+      - file: 'content/pages/about.md'
         label: 'About Page'
         name: 'about-page'
         fields:
