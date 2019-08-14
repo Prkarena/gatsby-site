@@ -1,68 +1,74 @@
 import React from 'react'
-import { MapPin, Smartphone, Mail } from 'react-feather'
 import { graphql } from 'gatsby'
 
 import PageHeader from '../components/PageHeader'
-import FormSimpleAjax from '../components/FormSimpleAjax'
-import Content from '../components/Content'
-import GoogleMap from '../components/GoogleMap'
-import Layout from '../components/Layout'
-import './AboutPage.css'
+import Content from '../components/Content.js'
+import Layout from '../components/Layout.js'
+import Accordion from '../components/Accordion'
+import BackgroundVideo from '../components/BackgroundVideo'
+import Gallery from '../components/Gallery'
+import Popup from '../components/Popup'
+/*----------- css -----------*/
+import './AboutPage.css';
 
 // Export Template for use in CMS preview
 export const AboutPageTemplate = ({
-  body,
   title,
   subtitle,
   featuredImage,
-  address,
-  phone,
-  email,
-  locations
+  section1,
+  section2,
+  video,
+  videoPoster,
+  videoTitle,
+  accordion,
+  body,
+  gallery
 }) => (
-  <main className="Contact">
+  <main>
     <PageHeader
       title={title}
       subtitle={subtitle}
       backgroundImage={featuredImage}
     />
-    <section className="section Contact--Section1">
-      <div className="container Contact--Section1--Container">
-        <div>
-          <Content source={body} />
-          <div className="Contact--Details">
-            {address && (
-              <a
-                className="Contact--Details--Item"
-                href={`https://www.google.com.au/maps/search/${encodeURI(
-                  address
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MapPin /> {address}
-              </a>
-            )}
-            {phone && (
-              <a className="Contact--Details--Item" href={`tel:${phone}`}>
-                <Smartphone /> {phone}
-              </a>
-            )}
-            {email && (
-              <a className="Contact--Details--Item" href={`mailto:${email}`}>
-                <Mail /> {email}
-              </a>
-            )}
-          </div>
-        </div>
-
-        <div>
-          <FormSimpleAjax name="Simple Form Ajax" />
-        </div>
+    <section className="section">
+      <div className="container">
+        <Content source={section1} />
       </div>
     </section>
 
-    <GoogleMap locations={locations} />
+    <section className="section">
+      <div className="container">
+        <h2>Our gallery component</h2>
+        <Gallery images={gallery} />
+      </div>
+    </section>
+
+    <section className="section">
+      <div className="container">
+        <Content source={section2} />
+      </div>
+    </section>
+
+    <section className="BackgroundVideo-section section">
+      <BackgroundVideo poster={videoPoster} videoTitle={videoTitle}>
+        {video && <source src={video} type="video/mp4" />}
+      </BackgroundVideo>
+    </section>
+
+    <section className="section">
+      <div className="container">
+        <Accordion items={accordion} />
+      </div>
+    </section>
+
+    <section className="section">
+      <div className="container">
+        <Popup>
+          <Content source={section1} />
+        </Popup>
+      </div>
+    </section>
   </main>
 )
 
@@ -71,7 +77,7 @@ const AboutPage = ({ data: { page } }) => (
     meta={page.frontmatter.meta || false}
     title={page.frontmatter.title || false}
   >
-    <AboutPageTemplate {...page.frontmatter} body={page.html} />
+    <AboutPageTemplate {...page} {...page.frontmatter} body={page.html} />
   </Layout>
 )
 
@@ -81,19 +87,21 @@ export const pageQuery = graphql`
   query AboutPage($id: String!) {
     page: markdownRemark(id: { eq: $id }) {
       ...Meta
+      ...Gallery
       html
       frontmatter {
         title
         template
         subtitle
         featuredImage
-        address
-        phone
-        email
-        locations {
-          mapLink
-          lat
-          lng
+        section1
+        section2
+        video
+        videoPoster
+        videoTitle
+        accordion {
+          title
+          description
         }
       }
     }

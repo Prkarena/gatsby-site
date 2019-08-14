@@ -8,7 +8,6 @@ import Accordion from '../components/Accordion'
 import BackgroundVideo from '../components/BackgroundVideo'
 import Gallery from '../components/Gallery'
 import Popup from '../components/Popup'
-
 // Export Template for use in CMS preview
 export const HomePageTemplate = ({
   title,
@@ -24,11 +23,16 @@ export const HomePageTemplate = ({
   gallery
 }) => (
   <main>
+
+
     <PageHeader
       title={title}
       subtitle={subtitle}
       backgroundImage={featuredImage}
     />
+
+ 
+
     <section className="section">
       <div className="container">
         <Content source={section1} />

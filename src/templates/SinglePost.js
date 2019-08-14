@@ -115,9 +115,9 @@ export const pageQuery = graphql`
   ## $id is processed via gatsby-node.js
   ## query name must be unique to this file
   query SinglePost($id: String!) {
-    post: markdownRemark(id: { eq: $id }) {
+    post: markdownRemark(id: { eq: $id }) { 
       ...Meta
-      html
+      html                                                    
       id
       frontmatter {
         title

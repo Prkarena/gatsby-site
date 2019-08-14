@@ -2,10 +2,11 @@ import React, { Fragment } from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
 import Meta from './Meta'
+import HeaderTop from './HeaderTop';
 import Nav from './Nav'
 import Footer from './Footer'
 //import GithubCorner from './GithubCorner'
-
+import '../css/bootstrap.min.css';
 import 'modern-normalize/modern-normalize.css'
 import './globalStyles.css'
 
@@ -37,6 +38,24 @@ export default ({ children, meta, title }) => {
               }
             }
           }
+          settings: allMarkdownRemark(
+            filter: { fields: { contentType: { eq: "settings" } } }
+            sort: { order: ASC, fields: [frontmatter___title] }
+          ) {
+            edges {
+              node {
+                frontmatter {
+                    section1
+                    section2
+                    title
+                    subtitle
+                    phone
+                    email
+                    address
+                }
+              }
+            }
+        }
         }
       `}
       render={data => {
@@ -73,15 +92,18 @@ export default ({ children, meta, title }) => {
               {...data.settingsYaml}
             />
 
+            <HeaderTop data = {data.settings.edges[0].node.frontmatter} />
             
             <Nav subNav={subNav} />
 
             <Fragment>{children}</Fragment>
 
-            <Footer />
+            <Footer data = {data.settings.edges[0].node.frontmatter} />
           </Fragment>
         )
       }}
     />
   )
 }
+
+

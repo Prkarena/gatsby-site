@@ -44,11 +44,13 @@
   border-bottom-color: transparent;
 }
 
+
 .NavLink:hover,
 .NavLink.active,
 .NavLink:focus {
   color: var(--primary);
   border-bottom-color: currentColor;
+  text-decoration: none;
 }
 
 .Nav--Group {

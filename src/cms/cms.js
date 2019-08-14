@@ -4,8 +4,11 @@ import './cms-utils'
 
 import { HomePageTemplate } from '../templates/HomePage'
 import { ComponentsPageTemplate } from '../templates/ComponentsPage'
+import { ProductsPageTemplate } from '../templates/ProductsPage'
+import { ServicesPageTemplate } from '../templates/ServicesPage'
 import { ContactPageTemplate } from '../templates/ContactPage'
 import { AboutPageTemplate } from '../templates/AboutPage'
+import { CareersPageTemplate } from '../templates/CareersPage'
 import { DefaultPageTemplate } from '../templates/DefaultPage'
 import { BlogIndexTemplate } from '../templates/BlogIndex'
 import { SinglePostTemplate } from '../templates/SinglePost'
@@ -24,11 +27,20 @@ if (
 CMS.registerPreviewTemplate('home-page', ({ entry }) => (
   <HomePageTemplate {...entry.toJS().data} />
 ))
+CMS.registerPreviewTemplate('products-page', ({ entry }) => (
+  <ProductsPageTemplate {...entry.toJS().data} />
+))
+CMS.registerPreviewTemplate('services-page', ({ entry }) => (
+  <ServicesPageTemplate {...entry.toJS().data} />
+))
 CMS.registerPreviewTemplate('components-page', ({ entry }) => (
   <ComponentsPageTemplate {...entry.toJS().data} />
 ))
 CMS.registerPreviewTemplate('contact-page', ({ entry }) => (
   <ContactPageTemplate {...entry.toJS().data} />
+))
+CMS.registerPreviewTemplate('careers-page', ({ entry }) => (
+  <CareersPageTemplate {...entry.toJS().data} />
 ))
 CMS.registerPreviewTemplate('about-page', ({ entry }) => (
   <AboutPageTemplate {...entry.toJS().data} />

@@ -28,7 +28,7 @@ export class Navigation extends Component {
 
   render() {
     const { active } = this.state,
-      { subNav } = this.props,
+
       NavLink = ({ to, className, children, ...props }) => (
         <Link
           to={to}
@@ -50,42 +50,12 @@ export class Navigation extends Component {
           </Link>
           <div className="Nav--Links">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/components/">Components</NavLink>
-            <div
-              className={`Nav--Group ${
-                this.state.activeSubNav === 'posts' ? 'active' : ''
-              }`}
-            >
-              <span
-                className={`NavLink Nav--GroupParent ${
-                  this.props.location.pathname.includes('posts') ||
-                  this.props.location.pathname.includes('blog') ||
-                  this.props.location.pathname.includes('post-categories')
-                    ? 'active'
-                    : ''
-                }`}
-                onClick={() => this.toggleSubNav('posts')}
-              >
-                Blog
-              </span>
-              <div className="Nav--GroupLinks">
-                <NavLink to="/blog/" className="Nav--GroupLink">
-                  All Posts
-                </NavLink>
-                {subNav.posts.map((link, index) => (
-                  <NavLink
-                    to={link.slug}
-                    key={'posts-subnav-link-' + index}
-                    className="Nav--GroupLink"
-                  >
-                    {link.title}
-                  </NavLink>
-                ))}
-              </div>
-            </div>
-            <NavLink to="/default/">Default</NavLink>
-            <NavLink to="/contact/">Contact</NavLink>
-            <NavLink to="/about/">About</NavLink>
+            <NavLink to="/about/">About-Us</NavLink>
+            <NavLink to="/products/">Products</NavLink>
+            <NavLink to="/services/">Services</NavLink>
+            <NavLink to="/contact/">Contact-Us</NavLink>
+            <NavLink to="/blog/">Blog</NavLink>
+            <NavLink to="/careers/">Careers</NavLink>
           </div>
           <button
             className="Button-blank Nav--MenuButton"

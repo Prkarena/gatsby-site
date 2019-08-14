@@ -4,11 +4,12 @@ import { Link } from 'gatsby'
 import BlogSearch from './BlogSearch'
 import './PostCategoriesNav.css'
 
-const PostCategoriesNav = ({ categories, enableSearch }) => (
+const PostCategoriesNav = ({ categories, enableSearch , slug }) => (
   <div className="PostCategoriesNav">
-    <Link className="NavLink" exact="true" to={`/blog/`}>
+    <Link className="NavLink" exact="true" to={`/${slug}/`}>
       All
     </Link>
+    {   console.log(categories)}
     {categories.map((category, index) => (
       <Link
         exact="true"
